@@ -1,0 +1,29 @@
+@import '../../styles/app.scss';
+.searchContainer {
+  height: 32px;
+  border-radius: 16px;
+  display: flex;
+  align-items: center;
+  margin: 8px 0;
+  box-shadow: 0px 0px 8px#dddddd;
+  overflow: hidden;
+
+  .searchIcon {
+    color: $thirdTextColor;
+    padding: 0 4px 0 10px;
+    display: flex;
+    align-items: center;
+    .icon {
+      font-weight: 900;
+    }
+  }
+  .search {
+    height: 100%;
+    padding-right: 10px;
+    color: $subTextColor;
+    &::placeholder {
+      color: $thirdTextColor;
+      font-size: 14px;
+    }
+  }
+}

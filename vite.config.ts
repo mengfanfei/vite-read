@@ -5,9 +5,21 @@ import vueJsx from '@vitejs/plugin-vue-jsx'
 import autoprefixer from 'autoprefixer'
 import pxtoviewport from 'postcss-px-to-viewport'
 
+import styleImport from 'vite-plugin-style-import'
+
+import { resolve } from 'path'
+
 // https://vitejs.dev/config/
 export default defineConfig({
-  plugins: [vue(), vueJsx()],
+  plugins: [vue(), vueJsx(), styleImport({
+    libs: [
+      {
+        libraryName: 'vant',
+        esModule: true,
+        resolveStyle: (name) => `vant/es/${name}/style`,
+      }
+    ]
+  })],
   esbuild: {
     jsxFactory: 'h',
     jsxFragment: 'Fragment'
@@ -20,6 +32,11 @@ export default defineConfig({
           viewportWidth: 375
         })
       ]
+    }
+  },
+  resolve: {
+    alias: {
+      '@': resolve(__dirname, './src')
     }
   }
 })
