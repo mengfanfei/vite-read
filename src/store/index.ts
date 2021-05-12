@@ -7,7 +7,7 @@ export interface IStore {
   user: IUserState
 }
 
-export const key: InjectionKey<Store<IStore>> = Symbol()
+// export const key: InjectionKey<Store<IStore>> = Symbol()
 
 const store = createStore<IStore>({
   modules: {
@@ -17,7 +17,7 @@ const store = createStore<IStore>({
 })
 
 export function useStore() {
-  return baseUseStore(key)
+  return baseUseStore<IStore>()
 }
 
 export default store
